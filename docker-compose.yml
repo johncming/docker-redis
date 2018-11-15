@@ -6,9 +6,7 @@ services:
     ports:
       - "6379:6379"
     volumes:
-      - "redis:/data"
-    deploy:
-      replicas: 1
+      - "./data:/data"
   web:
     image: rediscommander/redis-commander
     links:
@@ -17,8 +15,3 @@ services:
       - "8082:8081"
     environment:
       - "REDIS_HOSTS=local:redis:6379"
-    deploy:
-      replicas: 1
-
-volumes:
-  redis:
